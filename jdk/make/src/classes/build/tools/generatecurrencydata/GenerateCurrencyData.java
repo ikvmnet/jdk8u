@@ -283,8 +283,8 @@ public class GenerateCurrencyData {
             checkCurrencyCode(newCurrency);
             String timeString = currencyInfo.substring(4, length - 4);
             long time = format.parse(timeString).getTime();
-            if (Math.abs(time - System.currentTimeMillis()) > ((long) 10) * 365 * 24 * 60 * 60 * 1000) {
-                throw new RuntimeException("time is more than 10 years from present: " + time);
+            if (Math.abs(time - System.currentTimeMillis()) > ((long) 11) * 365 * 24 * 60 * 60 * 1000) {
+                throw new RuntimeException("time is more than 11 years from present: " + time);
             }
             specialCaseCutOverTimes[specialCaseCount] = time;
             specialCaseOldCurrencies[specialCaseCount] = oldCurrency;
