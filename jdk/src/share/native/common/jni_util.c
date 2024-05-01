@@ -29,6 +29,7 @@
 #include "jvm.h"
 #include "jni.h"
 #include "jni_util.h"
+#include "io_util.h"
 
 /* Due to a bug in the win32 C runtime library strings
  * such as "z:" need to be appended with a "." so we
@@ -881,13 +882,13 @@ JNU_ReleaseStringPlatformChars(JNIEnv *env, jstring jstr, const char *str)
  * VM can find it when loading system classes.
  *
  */
-extern int canonicalize(char *path, const char *out, int len);
+extern int canonicalize0(char *path, const char *out, int len);
 
 JNIEXPORT int
 Canonicalize(JNIEnv *env, char *orig, char *out, int len)
 {
     /* canonicalize an already natived path */
-    return canonicalize(orig, out, len);
+    return canonicalize0(orig, out, len);
 }
 
 JNIEXPORT jclass JNICALL
