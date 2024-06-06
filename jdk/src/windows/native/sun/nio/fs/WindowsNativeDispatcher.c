@@ -36,7 +36,7 @@
 #include <windows.h>
 #include <aclapi.h>
 #include <winioctl.h>
-#include <Sddl.h>
+#include <sddl.h>
 
 #include "jni.h"
 #include "jni_util.h"
