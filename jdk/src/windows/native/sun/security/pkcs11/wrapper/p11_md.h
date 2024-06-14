@@ -56,6 +56,9 @@
 
 /* defines for WIN32 platform *************************************************/
 
+#ifndef _P11_MD_H
+#define _P11_MD_H 1
+
 #include <windows.h>
 
 /* statement according to PKCS11 docu */
@@ -96,3 +99,5 @@ struct ModuleData {
 
 };
 typedef struct ModuleData ModuleData;
+
+#endif /* _P11_MD_H */
