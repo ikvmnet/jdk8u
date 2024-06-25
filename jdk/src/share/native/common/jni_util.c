@@ -27,6 +27,8 @@
 #include <string.h>
 
 #include "jvm.h"
+#include "jni.h"
+#include "jni_util.h"
 #include "io_util.h"
 
 /* Due to a bug in the win32 C runtime library strings
