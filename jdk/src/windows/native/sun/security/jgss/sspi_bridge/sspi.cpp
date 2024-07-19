@@ -37,7 +37,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <Strsafe.h>
+#include <strsafe.h>
 #include <ntsecapi.h>
 #include <new>
 
