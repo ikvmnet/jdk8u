@@ -32,7 +32,7 @@
 #include <dlfcn.h>
 #include <stdio.h>
 #include <stdlib.h>
-#if defined(__linux__) || defined(_ALLBSD_SOURCE)
+#if defined(__linux__) || defined(_ALLBSD_SOURCE) || defined(__EMSCRIPTEN__)
 #include <string.h>
 #else
 #include <strings.h>

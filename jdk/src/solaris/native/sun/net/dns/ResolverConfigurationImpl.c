@@ -33,7 +33,7 @@
 #include <strings.h>
 #endif
 
-#if defined(__linux__) || defined(_ALLBSD_SOURCE)
+#if defined(__linux__) || defined(_ALLBSD_SOURCE) || defined(__EMSCRIPTEN__)
 #include <string.h>
 #endif
 

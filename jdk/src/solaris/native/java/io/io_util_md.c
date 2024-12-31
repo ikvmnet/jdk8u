@@ -39,7 +39,7 @@
 #include <sys/filio.h>
 #endif
 
-#if defined(__linux__) || defined(_ALLBSD_SOURCE) || defined(_AIX)
+#if defined(__linux__) || defined(_ALLBSD_SOURCE) || defined(_AIX) || defined(__EMSCRIPTEN__)
 #include <sys/ioctl.h>
 #endif
 

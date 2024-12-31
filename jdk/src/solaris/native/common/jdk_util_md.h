@@ -43,6 +43,10 @@
 #include <math.h>
 #define ISNANF(f) _isnanf(f)
 #define ISNAND(d) _isnan(d)
+#elif defined(__EMSCRIPTEN__)
+#include <math.h>
+#define ISNANF(f) isnan(f)
+#define ISNAND(d) isnan(d)
 #else
 #error "missing platform-specific definition here"
 #endif
