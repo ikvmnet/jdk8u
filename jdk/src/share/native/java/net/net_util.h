@@ -131,7 +131,7 @@ jfieldID NET_GetFileDescriptorID(JNIEnv *env);
 
 JNIEXPORT jint JNICALL ipv6_available() ;
 
-void
+JNIEXPORT void JNICALL
 NET_AllocSockaddr(struct sockaddr **him, int *len);
 
 JNIEXPORT int JNICALL

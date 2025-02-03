@@ -1019,7 +1019,7 @@ BOOL AwtPrintControl::UpdateAttributes(JNIEnv *env,
         DASSERT(!IsBadReadPtr(devnames, sizeof(DEVNAMES)));
         LPTSTR lpcNames = (LPTSTR)devnames;
         LPTSTR pbuf = (_tcslen(lpcNames + devnames->wDeviceOffset) == 0 ?
-                      TEXT("") : lpcNames + devnames->wDeviceOffset);
+                      (LPTSTR)TEXT("") : lpcNames + devnames->wDeviceOffset);
         if (pbuf != NULL) {
             jstring jstr = JNU_NewStringPlatform(env, pbuf);
             env->CallVoidMethod(printCtrl,
@@ -1028,7 +1028,7 @@ BOOL AwtPrintControl::UpdateAttributes(JNIEnv *env,
             env->DeleteLocalRef(jstr);
         }
         pbuf = (_tcslen(lpcNames + devnames->wOutputOffset) == 0 ?
-                      TEXT("") : lpcNames + devnames->wOutputOffset);
+                      (LPTSTR)TEXT("") : lpcNames + devnames->wOutputOffset);
         if (pbuf != NULL) {
             if (wcscmp(pbuf, L"FILE:") == 0) {
                 pdFlags |= PD_PRINTTOFILE;
