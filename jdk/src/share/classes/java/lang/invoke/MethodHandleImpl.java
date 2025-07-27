@@ -1238,9 +1238,18 @@ import static java.lang.invoke.MethodHandles.Lookup.IMPL_LOOKUP;
                             int len = uconn.getContentLength();
                             byte[] bytes = new byte[len];
                             try (java.io.InputStream str = uconn.getInputStream()) {
-                                int nr = str.read(bytes);
-                                if (nr != len)  throw new java.io.IOException(tResource);
+                                int rem = len;
+                                while (rem > 0) {
+                                    final int nrd = str.read(bytes, bytes.length - rem, rem);
+                                    if (nrd == -1) break;
+                                    rem -= nrd;
+                                }
+
+                                if (rem != 0) {
+                                    throw new java.io.IOException(tResource);
+                                }
                             }
+
                             values[0] = bytes;
                         } catch (java.io.IOException ex) {
                             throw new InternalError(ex);
