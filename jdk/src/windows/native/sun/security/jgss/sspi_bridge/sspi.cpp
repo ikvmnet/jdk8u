@@ -37,7 +37,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <Strsafe.h>
+#include <strsafe.h>
 #include <ntsecapi.h>
 #include <new>
 
@@ -648,7 +648,7 @@ gss_acquire_cred(OM_uint32 *minor_status,
         if (cred->phCredK == NULL) {
             goto err;
         }
-        ss = AcquireCredentialsHandle(
+        ss = ::AcquireCredentialsHandle(
                 NULL,
                 L"Kerberos",
                 cred_usage == 0 ? SECPKG_CRED_BOTH :
@@ -678,7 +678,7 @@ gss_acquire_cred(OM_uint32 *minor_status,
         auth.Flags = SEC_WINNT_AUTH_IDENTITY_UNICODE;
         auth.PackageList = (unsigned short*)L"Kerberos";
         auth.PackageListLength = 8;
-        ss = AcquireCredentialsHandle(
+        ss = ::AcquireCredentialsHandle(
                 NULL,
                 L"Negotiate",
                 cred_usage == 0 ? SECPKG_CRED_BOTH :
@@ -936,9 +936,9 @@ gss_init_sec_context(OM_uint32 *minor_status,
             auth.Flags = SEC_WINNT_AUTH_IDENTITY_UNICODE;
             auth.PackageList = (unsigned short*)L"Kerberos";
             auth.PackageListLength = 8;
-            ss = AcquireCredentialsHandle(
+            ss = ::AcquireCredentialsHandle(
                     NULL,
-                    isSPNEGO ? L"Negotiate" : L"Kerberos",
+                    isSPNEGO ? (LPTSTR)L"Negotiate" : (LPTSTR)L"Kerberos",
                     SECPKG_CRED_OUTBOUND,
                     NULL,
                     isSPNEGO ? &auth : NULL,
