@@ -339,7 +339,7 @@ protected:
     jsize  m_dwSize;
     LPWSTR getNonEmptyString() {
         return (NULL==m_pStr)
-                ? L""
+                ? (LPWSTR)L""
                 : m_pStr;
     }
 

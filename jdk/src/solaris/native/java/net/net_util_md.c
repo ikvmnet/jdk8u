@@ -35,9 +35,7 @@
 #include <dlfcn.h>
 #include <sys/time.h>
 
-#ifndef _ALLBSD_SOURCE
-#include <values.h>
-#else
+#ifdef _ALLBSD_SOURCE
 #include <limits.h>
 #include <sys/param.h>
 #include <sys/sysctl.h>
@@ -50,6 +48,7 @@
 #include <sys/sockio.h>
 #include <stropts.h>
 #include <inet/nd.h>
+#include <values.h>
 #endif
 
 #ifdef __linux__

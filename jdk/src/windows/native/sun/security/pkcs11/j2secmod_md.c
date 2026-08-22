@@ -30,6 +30,7 @@
 #include <jni_util.h>
 
 #include "j2secmod.h"
+#include "wrapper/pkcs11wrapper.h"
 
 void *findFunction(JNIEnv *env, jlong jHandle, const char *functionName) {
     HINSTANCE hModule = (HINSTANCE)jHandle;

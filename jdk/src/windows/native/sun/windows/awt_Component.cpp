@@ -3579,7 +3579,7 @@ UINT AwtComponent::WindowsKeyToJavaChar(UINT wkey, UINT modifiers, TransOps ops,
     } else {
         UINT scancode = ::MapVirtualKey(wkey, 0);
         converted = ::ToUnicodeEx(wkey, scancode, keyboardState,
-                                              wChar, 2, 0, GetKeyboardLayout());
+                                              (LPWSTR)&wChar, 2, 0, GetKeyboardLayout());
     }
 
     UINT translation;
@@ -3832,11 +3832,6 @@ void AwtComponent::SetCompositionWindow(RECT& r)
         return;
     }
     COMPOSITIONFORM cf = {CFS_DEFAULT, {0, 0}, {0, 0, 0, 0}};
-    LOGFONT lf;
-    HFONT hFont = (HFONT) GetStockObject(DEFAULT_GUI_FONT);
-    if (GetObject(hFont, sizeof(lf), (LPVOID)&lf) == sizeof(lf)) {
-        ImmSetCompositionFont(hIMC, &lf);
-    }
     ImmSetCompositionWindow(hIMC, &cf);
     ImmReleaseContext(hwnd, hIMC);
 }
